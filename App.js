@@ -9,7 +9,10 @@ export default class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      data: [{ name: "Jeff" }]
+      data: [{
+        name: "Jeff",
+        roommates: [{ name: "Steph", chores: [{ chore_name: "Trash", chore_description: "Take out the trash!" }] }]
+      }]
     };
   }
   fetchData = () => {
