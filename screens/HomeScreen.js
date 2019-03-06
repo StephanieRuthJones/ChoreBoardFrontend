@@ -21,7 +21,8 @@ export default class HomeScreen extends React.Component {
     console.log("names", this.props.screenProps.households[0].name)
     return (
       <View style={styles.container}>
-        <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+        <ScrollView style={styles.container}
+        backgroundColor= "#7AA095" contentContainerStyle={styles.contentContainer}>
 
 
           <View style={styles.getStartedContainer}>
@@ -81,7 +82,7 @@ export default class HomeScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#7AA095',
   },
   developmentModeText: {
     marginBottom: 20,
