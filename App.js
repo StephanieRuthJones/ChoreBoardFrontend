@@ -3,7 +3,7 @@ import { Platform, StatusBar, StyleSheet, View, Text } from 'react-native';
 import { AppLoading, Asset, Font, Icon } from 'expo';
 import AppNavigator from './navigation/AppNavigator';
 
-const url = 'https://61621798.ngrok.io/'
+const url = 'http://localhost:3001/'
 
 export default class App extends React.Component {
   constructor(props) {

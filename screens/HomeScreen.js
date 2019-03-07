@@ -23,7 +23,12 @@ export default class HomeScreen extends React.Component {
       <View style={styles.container}>
         <ScrollView style={styles.container}
         backgroundColor= "#7AA095" contentContainerStyle={styles.contentContainer}>
-
+        <View>
+          <Image
+            source={
+              require('../assets/images/logo.png')
+            }/>
+        </View>
 
           <View style={styles.getStartedContainer}>
             <Text>Houshold List</Text>
