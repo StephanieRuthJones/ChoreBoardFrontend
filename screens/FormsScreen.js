@@ -1,8 +1,11 @@
 import React from 'react';
+import AddRoommate from "../components/AppComponents/AddRoommate.js"
+import AddChore from "../components/AppComponents/AddChore.js"
 import {
     StyleSheet,
     Text,
     View,
+    Image,
     TextInput,
     TouchableOpacity,
 } from 'react-native';
@@ -14,15 +17,18 @@ export default class Form extends React.Component {
     render() {
 
         return (
-            <View style={styles.form}>
-                <Text style={styles.header}>Registration</Text>
-
-                <TextInput style={styles.textInput} placeholder="Your Name" placeholderTextColor= 'white'></TextInput>
-                <TextInput style={styles.textInput} placeholder="Your Email" placeholderTextColor= 'white'></TextInput>
-                <TextInput style={styles.textInput} placeholder="Password" secureTextEntry={true} placeholderTextColor= 'white'></TextInput>
-
+            <View style={styles.container}>
+              <Text style={styles.header}>
+                <Image
+                  style={[styles.image]}
+                  source={
+                    require('../assets/images/logo.png')
+                  }/></Text>
                 <TouchableOpacity style={styles.button}>
-                    <Text style={styles.buttonText}>Sign up</Text>
+                  <Text style={styles.buttonText}>Add Roommate</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.button}>
+                  <Text style={styles.buttonText}>Add Chore</Text>
                 </TouchableOpacity>
             </View>
         );
@@ -31,40 +37,28 @@ export default class Form extends React.Component {
 
 
 const styles = StyleSheet.create({
-    form: {
+    container: {
         flex: 1,
+        paddingTop: 30,
         alignSelf: 'stretch',
-        backgroundColor: '#7AA095'
-
+        backgroundColor: '#7AA095',
     },
-    header: {
-        fontSize: 24,
-        textAlign: 'center',
-        color: 'white',
-        marginBottom: 40,
-        paddingBottom: 10,
-        borderBottomColor: '#199187',
-        borderBottomWidth: 1,
-    },
-    textInput: {
-        alignSelf: 'stretch',
-        height: 40,
-        marginBottom: 30,
-        color: 'white',
-        borderBottomColor: '#f8f8f8',
-        borderBottomWidth: 1,
-    },
-   
     button: {
-        alignSelf: 'stretch',
-        alignItems: 'center',
-        padding: 20,
-        backgroundColor: '#7F7767',
-        marginTop: 30,
-
+      // alignSelf: 'stretch',
+      alignItems: 'center',
+      padding: 20,
+      backgroundColor: '#7F7767',
+      marginTop: 30,
     },
     buttonText: {
-        color: 'white',
-        fontWeight: 'bold',
-    }
+      color: 'white',
+      fontWeight: 'bold',
+
+  },
+  image: {
+    alignSelf: 'center',
+    paddingLeft: 20,
+    height: 80,
+    width: 80
+  },
 });
