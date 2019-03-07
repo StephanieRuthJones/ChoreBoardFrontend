@@ -8,6 +8,7 @@ import {
   Text,
   TouchableOpacity,
   View,
+
 } from 'react-native';
 import { WebBrowser } from 'expo';
 
@@ -31,6 +32,7 @@ export default class HomeScreen extends React.Component {
             <View>{this.props.screenProps.households[0].roommates.map(roommate => {
               return <Roommate key={roommate.id} roommate={roommate}></Roommate>
             })}</View>
+
 
           </View>
 
