@@ -30,7 +30,7 @@ const FormsStack = createStackNavigator({
 });
 
 FormsStack.navigationOptions = {
-  tabBarLabel: 'Links',
+  tabBarLabel: 'Forms',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
