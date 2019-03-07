@@ -4,7 +4,7 @@ import { AppLoading, Asset, Font, Icon } from 'expo';
 import AppNavigator from './navigation/AppNavigator';
 import Regform from './components/Regform'
 
-const url = 'https://localhost3001'
+const url = 'https://choreboardserver.herokuapp.com'
 
 export default class App extends React.Component {
   constructor(props) {
