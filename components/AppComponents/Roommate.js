@@ -40,7 +40,7 @@ export default class Roommate extends React.Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text key={this.state.roommate.id} style={styles.names}>{this.state.roommate.name}'s Chores</Text>
+                <Text key={this.state.roommate.id} style={styles.names}>{this.state.roommate.name}'s Chores:</Text>
                 {this.state.roommate.chores.map(chore => {
                     return <View><Text><Text style={styles.chores}>{chore.chore_name}: </Text> <Text style={styles.choreDescriptionText}>{chore.chore_description}</Text></Text>
                         <TouchableOpacity onPress={() => this.props.passChore(this.calcIndex(), this.calcIndex() - 1, 1)}>
@@ -50,6 +50,7 @@ export default class Roommate extends React.Component {
                             />
                         </TouchableOpacity>
                     </View>
+
                 })}
             </View>
         )
@@ -69,7 +70,7 @@ const styles = StyleSheet.create({
         padding: 5,
         color: '#D7F9F1',
         fontSize: 30,
-        textAlign: 'left',
+        textAlign: 'center',
         fontWeight: 'bold',
     },
     choreDescriptionText: {
@@ -80,9 +81,9 @@ const styles = StyleSheet.create({
         // margin: 10,
         flexDirection: 'row',
         color: '#D7F9F1',
-        fontSize: 15,
+        fontSize: 25,
         // lineHeight: 19,
-        textAlign: 'left',
+        textAlign: 'center',
         fontWeight: 'bold',
     },
     title: {
