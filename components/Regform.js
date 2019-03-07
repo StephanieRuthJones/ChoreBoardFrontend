@@ -11,7 +11,7 @@ export default class Regform extends React.Component {
     render() {
         return (
             <View style={styles.regform}>
-                <Text>Testing</Text>
+            
 
             </View>
         )
