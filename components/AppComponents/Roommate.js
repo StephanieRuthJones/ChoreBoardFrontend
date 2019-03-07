@@ -21,10 +21,10 @@ export default class Roommate extends React.Component {
 
     render() {
         return (
-            <View style={styles.getStartedContainer}>
+            <View style={styles.container}>
                 <Text key={this.state.roommate.id} style={styles.names}>{this.state.roommate.name}'s Chores</Text>
                 {this.state.roommate.chores.map(chore => {
-                    return <Text><Text style={styles.properNounText}>{chore.chore_name}: </Text> <Text style={styles.choreDescriptionText}>{chore.chore_description}</Text></Text>
+                    return <Text><Text style={styles.chores}>{chore.chore_name}: </Text> <Text style={styles.choreDescriptionText}>{chore.chore_description}</Text></Text>
                 })}
             </View>
         )
@@ -34,32 +34,32 @@ export default class Roommate extends React.Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
+        backgroundColor: '#7AA095',
         color: '#D7F9F1',
+        textAlign: 'left'
     },
 
     names: {
         margin: 10,
         padding: 5,
         color: '#D7F9F1',
-        fontSize: 20,
+        fontSize: 30,
         textAlign: 'left',
         fontWeight: 'bold',
-    },
-    properNounText: {
-        margin: 10,
-        padding: 5,
-        color: '#D7F9F1',
-        fontSize: 20,
-        lineHeight: 19,
-        textAlign: 'left',
-        fontWeight: 'bold',
-        color: '#D7F9F1',
     },
     choreDescriptionText: {
-        color: '#7F7767',
+        color: '#D4EFB0',
     },
-
+    chores: {
+        // textAlign: 'left',
+        // margin: 10,
+        // paddingLeft: 30,
+        color: '#D7F9F1',
+        fontSize: 15,
+        // lineHeight: 19,
+        textAlign: 'left',
+        fontWeight: 'bold',
+    },
     title: {
         color: '#7F7767',
         fontWeight: 'bold',

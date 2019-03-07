@@ -45,6 +45,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 30,
+    paddingBottom: 30,
     backgroundColor: '#7AA095',
   },
     image: {
@@ -54,9 +55,7 @@ const styles = StyleSheet.create({
     },
   body: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginHorizontal: 50,
+    marginHorizontal: 25,
   },
   households: {
     margin: 10,

@@ -11,8 +11,27 @@ export default class App extends React.Component {
     super(props)
     this.state = {
       data: [{
-        name: "Jeff",
-        roommates: [{ name: "Steph", chores: [{ chore_name: "Trash", chore_description: "Take out the trash!" }] }]
+          "id": 0,
+          "name": "",
+          "roommates": [
+              {
+                  "id": 0,
+                  "name": "",
+                  "household_id": 0,
+                  "total_stars": 0,
+                  "chores": [
+                      {
+                          "id": 0,
+                          "chore_name": "",
+                          "chore_description": "",
+                          "star_value": 0,
+                          "household_id": 0,
+                          "roommate_id": 0,
+                          "timeInterval": ""
+                      }
+                  ]
+              }
+          ]
       }]
     };
   }
