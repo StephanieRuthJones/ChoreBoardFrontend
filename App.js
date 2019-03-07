@@ -2,8 +2,9 @@ import React from 'react';
 import { Platform, StatusBar, StyleSheet, View, Text } from 'react-native';
 import { AppLoading, Asset, Font, Icon } from 'expo';
 import AppNavigator from './navigation/AppNavigator';
+import Regform from './components/Regform'
 
-const url = 'https://61621798.ngrok.io/'
+const url = 'https://localhost3001'
 
 export default class App extends React.Component {
   constructor(props) {
@@ -15,11 +16,12 @@ export default class App extends React.Component {
       }]
     };
   }
+
   fetchData = () => {
-    return fetch(`${url}households/fullHouse/all`)
+    return fetch(`${url}/households/fullHouse/all`)
       .then(res => res.json())
       .then(data => {
-
+        console.log('data', data)
         this.setState({ data: data })
         return data
       })
@@ -45,7 +47,7 @@ export default class App extends React.Component {
       return (
         <View style={styles.container}>
           {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-
+          <Regform />
           <AppNavigator
             screenProps={{
               households: this.state.data
@@ -86,5 +88,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
+    color: '#7F7767',
   },
 });

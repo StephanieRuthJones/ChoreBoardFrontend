@@ -3,7 +3,7 @@
   "expoServerPort": null,
   "packagerPort": null,
   "packagerPid": null,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null
+  "expoServerNgrokUrl": "https://dq-zc4.anonymous.choreboardfrontend.exp.direct",
+  "packagerNgrokUrl": "https://packager.dq-zc4.anonymous.choreboardfrontend.exp.direct",
+  "ngrokPid": 3360
 }
