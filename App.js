@@ -2,21 +2,26 @@ import React from 'react';
 import { Platform, StatusBar, StyleSheet, View, Text } from 'react-native';
 import { AppLoading, Asset, Font, Icon } from 'expo';
 import AppNavigator from './navigation/AppNavigator';
+import Regform from './components/Regform'
 
-const url = 'http://localhost:3001/'
+const url = 'https://choreboardserver.herokuapp.com'
 
 export default class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      data: [{ name: "Jeff" }]
+      data: [{
+        name: "Jeff",
+        roommates: [{ name: "Steph", chores: [{ chore_name: "Trash", chore_description: "Take out the trash!" }] }]
+      }]
     };
   }
+
   fetchData = () => {
-    return fetch(`${url}households/fullHouse/all`)
+    return fetch(`${url}/households/fullHouse/all`)
       .then(res => res.json())
       .then(data => {
-
+        console.log('data', data)
         this.setState({ data: data })
         return data
       })
@@ -42,7 +47,7 @@ export default class App extends React.Component {
       return (
         <View style={styles.container}>
           {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-
+          <Regform />
           <AppNavigator
             screenProps={{
               households: this.state.data
@@ -82,6 +87,7 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  
+    backgroundColor: '#fff',
+    color: '#7F7767',
   },
 });
