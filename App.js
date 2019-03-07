@@ -11,27 +11,27 @@ export default class App extends React.Component {
     super(props)
     this.state = {
       data: [{
-          "id": 0,
-          "name": "",
-          "roommates": [
+        "id": 0,
+        "name": "",
+        "roommates": [
+          {
+            "id": 0,
+            "name": "",
+            "household_id": 0,
+            "total_stars": 0,
+            "chores": [
               {
-                  "id": 0,
-                  "name": "",
-                  "household_id": 0,
-                  "total_stars": 0,
-                  "chores": [
-                      {
-                          "id": 0,
-                          "chore_name": "",
-                          "chore_description": "",
-                          "star_value": 0,
-                          "household_id": 0,
-                          "roommate_id": 0,
-                          "timeInterval": ""
-                      }
-                  ]
+                "id": 0,
+                "chore_name": "",
+                "chore_description": "",
+                "star_value": 0,
+                "household_id": 0,
+                "roommate_id": 0,
+                "timeInterval": ""
               }
-          ]
+            ]
+          }
+        ]
       }]
     };
   }
@@ -52,8 +52,17 @@ export default class App extends React.Component {
       .catch(err => console.error(err))
   }
 
+  passChore = (index, roommate_id, chores_id) => {
+    if (roommate_id === -1) {
+      roommate_id = this.state.data[0].roommates.length - 1
+    }
+    let tempStateObject = this.state.data[0].roommates[roommate_id].chores[chores_id]
+    console.log("Index: ", index)
+    console.log(tempStateObject)
+  }
+
   render() {
-    // console.log('data', this.state.data)
+
     if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) {
       return (
         <AppLoading
@@ -69,7 +78,8 @@ export default class App extends React.Component {
           <Regform />
           <AppNavigator
             screenProps={{
-              households: this.state.data
+              households: this.state.data,
+              passChore: this.passChore
             }} />
         </View>
       );
