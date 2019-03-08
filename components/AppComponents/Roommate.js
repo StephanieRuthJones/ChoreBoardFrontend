@@ -31,6 +31,7 @@ export default class Roommate extends React.Component {
                 {this.state.roommate.chores.map(chore => {
                     return <Chore key={chore.id} chore={chore} passChore={this.props.passChore} calcRoommateIndex={this.calcRoommateIndex()} roommate={this.state.roommate}></Chore>
                 })}
+              
             </View>
         )
     }
@@ -41,7 +42,7 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#7AA095',
         color: '#D7F9F1',
-        textAlign: 'left'
+        // textAlign: 'left'
     },
 
     names: {
@@ -74,4 +75,7 @@ const styles = StyleSheet.create({
         height: 20,
         width: 20,
     },
+    chore: {
+        textAlign: 'left'
+    }
 });

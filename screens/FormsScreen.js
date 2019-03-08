@@ -42,7 +42,7 @@ export default class Form extends React.Component {
             style={[styles.image]}
             source={
               require('../assets/images/logo.png')
-            } /></Text>
+            } />Add More</Text>
 
 
         <TouchableOpacity style={styles.button}
@@ -103,4 +103,15 @@ const styles = StyleSheet.create({
     height: 80,
     width: 80
   },
+  header: {
+    fontSize: 24,
+    textAlign: 'center',
+    color: 'white',
+    justifyContent: 'space-between',
+    marginBottom: 40,
+    paddingBottom: 10,
+    borderBottomColor: '#199187',
+    borderBottomWidth: 1,
+    paddingLeft: 10
+  }
 });
