@@ -14,7 +14,6 @@ export default class NewChore extends React.Component {
 
 
     render() {
-
         return (
             <View style={styles.form}>
                 

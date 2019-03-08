@@ -20,7 +20,6 @@ export default class Roommate extends React.Component {
             roommates: this.props.roommates
         }
     }
-    
 
     calcRoommateIndex = () => this.state.roommates.findIndex((roommate) => roommate.id === this.state.roommate.id)
 
