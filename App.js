@@ -14,7 +14,6 @@ export default class App extends React.Component {
       data: [{
         "id": 0,
         "name": "",
-<<<<<<< HEAD
         "roommates": [{
           "id": 0,
           "name": "",
@@ -30,27 +29,6 @@ export default class App extends React.Component {
             "timeInterval": ""
           }]
         }]
-=======
-        "roommates": [
-          {
-            "id": 0,
-            "name": "",
-            "household_id": 0,
-            "total_stars": 0,
-            "chores": [
-              {
-                "id": 0,
-                "chore_name": "",
-                "chore_description": "",
-                "star_value": 0,
-                "household_id": 0,
-                "roommate_id": 0,
-                "timeInterval": ""
-              }
-            ]
-          }
-        ]
->>>>>>> aadd6f01057f313a6f27e6712ed51bd41fdde1da
       }]
     }
   }
@@ -59,25 +37,25 @@ export default class App extends React.Component {
     return fetch(`${url}/households/fullHouse/all`)
       .then(res => res.json())
       .then(data => {
-        console.log('data', data)
         this.setState({ data: data })
         return data
       })
   }
 
   componentDidMount() {
-    //write fetch request
     this.fetchData()
       .catch(err => console.error(err))
   }
 
-  passChore = (index, roommate_id, chores_id) => {
+  passChore = (roommate_id, chores_id) => {
+    let currentIndex = 0
     if (roommate_id === -1) {
       roommate_id = this.state.data[0].roommates.length - 1
     }
     let tempStateObject = this.state.data[0].roommates[roommate_id].chores[chores_id]
-    console.log("Index: ", index)
     console.log(tempStateObject)
+    tempStateObject.roommate_id = roommate_id+1
+    console.log("modified object: ", tempStateObject)
   }
 
   render() {

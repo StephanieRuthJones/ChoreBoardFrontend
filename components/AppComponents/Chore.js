@@ -1,5 +1,4 @@
 import React from 'react';
-import Chore from "./Chore"
 import {
     Image,
     Platform,
@@ -11,29 +10,31 @@ import {
 } from 'react-native';
 import { WebBrowser } from 'expo';
 
-export default class Roommate extends React.Component {
+export default class Chore extends React.Component {
 
-    constructor(props) {
-        super(props)
-        this.state = {
-            roommate: this.props.roommate,
-            roommates: this.props.roommates
-        }
-    }
-    
+	constructor(props) {
+		super(props)
+		this.state = {
+			chore: this.props.chore,
+			roommate: this.props.roommate
+		}
+	}
 
-    calcRoommateIndex = () => this.state.roommates.findIndex((roommate) => roommate.id === this.state.roommate.id)
+	calcChoreIndex = () => this.state.roommate.chores.findIndex((chore) => chore.id === this.state.chore.id)
 
-    render() {
-        return (
-            <View style={styles.container}>
-                <Text key={this.state.roommate.id} style={styles.names}>{this.state.roommate.name}'s Chores:</Text>
-                {this.state.roommate.chores.map(chore => {
-                    return <Chore key={chore.id} chore={chore} passChore={this.props.passChore} calcRoommateIndex={this.calcRoommateIndex()} roommate={this.state.roommate}></Chore>
-                })}
-            </View>
-        )
-    }
+	render() {
+		return (
+			<View>
+				<Text><Text style={styles.chores}>{this.state.chore.chore_name}: </Text><Text style={styles.choreDescriptionText}>{this.state.chore.chore_description}</Text></Text>
+				<TouchableOpacity onPress={() => this.props.passChore(this.props.calcRoommateIndex, this.calcChoreIndex())}>
+					<Image
+						style={styles.button}
+						source={require('../../assets/images/box.png')}
+					/>
+				</TouchableOpacity>
+			</View>
+		)
+	}
 }
 
 const styles = StyleSheet.create({

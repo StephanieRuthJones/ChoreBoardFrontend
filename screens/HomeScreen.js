@@ -20,7 +20,6 @@ export default class HomeScreen extends React.Component {
   };
 
   render() {
-    console.log("names", this.props.screenProps.households[0].name)
     return (
       <View style={styles.container}>
         <ScrollView style={styles.container}>
@@ -34,7 +33,7 @@ export default class HomeScreen extends React.Component {
           <View>
             <Text style={styles.households}>{this.props.screenProps.households[0].name}</Text>
             <View style={styles.body}>{this.props.screenProps.households[0].roommates.map(roommate => {
-              return <Roommate passChore={this.props.screenProps.passChore} key={roommate.id} roommates={this.props.screenProps.households[0].roommates} roommate={roommate}></Roommate>
+              return <Roommate key={roommate.id} passChore={this.props.screenProps.passChore} roommates={this.props.screenProps.households[0].roommates} roommate={roommate}></Roommate>
             })}</View>
           </View>
         </ScrollView>
