@@ -1,1 +1,6 @@
 node_modules
+
+.expo/packaget-info.json
+.expo/settings.json
+
+/home/zeke/Projects/ChoreBoard/ChoreBoardFrontend/.expo
