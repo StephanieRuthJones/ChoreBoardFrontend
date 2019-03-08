@@ -74,10 +74,16 @@ export default class App extends React.Component {
   }
 
 
-  onPress = (newRoommate) => {
-    this.setState({
-      roommates: this.state.roommates.push(this.state.newRoommate)
-
+  addNewRoommate = (newRoommate) => {
+    let newData = [...this.state.data]
+    newData[0].roommates = [...newData[0].roommates, newRoommate]
+    this.setState({ data: newData })
+    fetch(`${url}/roommates`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newRoommate)
     })
   }
 
@@ -85,7 +91,7 @@ export default class App extends React.Component {
     //insert index finding logic here later
     let newData = [...this.state.data]
     newData[0].roommates[0].chores = [...newData[0].roommates[0].chores, choreObject]
-    this.setState({data: newData})
+    this.setState({ data: newData })
     fetch(`${url}/chores`, {
       method: "POST",
       headers: {
@@ -114,7 +120,8 @@ export default class App extends React.Component {
             screenProps={{
               households: this.state.data,
               passChore: this.passChore,
-              addNewChore: this.addNewChore
+              addNewChore: this.addNewChore,
+              addNewRoommate: this.addNewRoommate
             }} />
         </View>
       );

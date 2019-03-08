@@ -17,11 +17,10 @@ export default class Form extends React.Component {
       zip: "",
       ifRoommateForm: false,
       ifChoreForm: false,
-<<<<<<< HEAD
-      ifEditForm: false
-=======
+
+      ifEditForm: false,
+
       newRoommate: null
->>>>>>> 018c8f35b801dfb99094784b7ea1a16b88f42984
     }
   }
 
@@ -37,14 +36,12 @@ export default class Form extends React.Component {
     })
   }
 
-<<<<<<< HEAD
   dropEditForm = () => {
     this.setState({
       ifEditForm: !this.state.ifEditForm
     })
   }
 
-=======
 
   handleName = (text) => {
     console.log('text', text)
@@ -53,13 +50,15 @@ export default class Form extends React.Component {
     })
   }
 
-  onPress = (newRoommate) => {
-    this.setState({
-      roommates: [...this.state.roommates, this.state.newRoommate]
-    })
-    console.log('button')
+  postNewRoommate = () => {
+    let tempObj = {
+      name: this.state.newRoommate,
+      household_id: 0,
+      total_stars: 0
+    }
+    this.props.screenProps.addNewRoommate(tempObj)
   }
->>>>>>> 018c8f35b801dfb99094784b7ea1a16b88f42984
+
   render() {
 
     return (
@@ -79,7 +78,7 @@ export default class Form extends React.Component {
             <TextInput style={styles.textInput} placeholder="Roommate Name" placeholderTextColor='white' onChangeText={this.handleName}></TextInput>
 
             <TouchableOpacity style={styles.button}>
-              <Text style={styles.buttonText} onPress={this.onPress} >Submit</Text>
+              <Text style={styles.buttonText} onPress={this.postNewRoommate} >Submit</Text>
             </TouchableOpacity>
           </View> : null}
         </TouchableOpacity>
