@@ -7,53 +7,73 @@ import Regform from './components/Regform'
 const url = 'https://choreboardserver.herokuapp.com'
 
 export default class App extends React.Component {
+  
   constructor(props) {
     super(props)
     this.state = {
       data: [{
+        "id": 0,
+        "name": "",
+        "roommates": [{
           "id": 0,
           "name": "",
-          "roommates": [
-              {
-                  "id": 0,
-                  "name": "",
-                  "household_id": 0,
-                  "total_stars": 0,
-                  "chores": [
-                      {
-                          "id": 0,
-                          "chore_name": "",
-                          "chore_description": "",
-                          "star_value": 0,
-                          "household_id": 0,
-                          "roommate_id": 0,
-                          "timeInterval": ""
-                      }
-                  ]
-              }
-          ]
+          "household_id": 0,
+          "total_stars": 0,
+          "chores": [{
+            "id": 0,
+            "chore_name": "",
+            "chore_description": "",
+            "star_value": 0,
+            "household_id": 0,
+            "roommate_id": 0,
+            "timeInterval": ""
+          }]
+        }]
       }]
-    };
+    }
   }
 
   fetchData = () => {
     return fetch(`${url}/households/fullHouse/all`)
       .then(res => res.json())
       .then(data => {
-        console.log('data', data)
         this.setState({ data: data })
         return data
       })
   }
 
   componentDidMount() {
-    //write fetch request
     this.fetchData()
       .catch(err => console.error(err))
   }
 
+  passChore = (paramRoommate_id, chores_id) => {
+    let roommate_id = paramRoommate_id
+    if (roommate_id === -1) {
+      roommate_id = this.state.data[0].roommates.length - 1
+    }
+    let targetRoommate = roommate_id + 1
+    if(targetRoommate === this.state.data[0].roommates.length){
+      targetRoommate = 0
+    }
+    let tempStateObject = this.state.data[0].roommates[roommate_id].chores[chores_id]
+    let newData = [...this.state.data]
+    tempStateObject.roommate_id = newData[0].roommates[targetRoommate].id
+    newData[0].roommates[roommate_id].chores = newData[0].roommates[roommate_id].chores.filter(element => element.id !== tempStateObject.id)
+    newData[0].roommates[targetRoommate].chores = [...newData[0].roommates[targetRoommate].chores, tempStateObject]
+    this.setState({
+      data: newData
+    })
+    fetch(`${url}/chores/${tempStateObject.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(tempStateObject)
+    })
+  }
+
   render() {
-    // console.log('data', this.state.data)
     if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) {
       return (
         <AppLoading
@@ -69,7 +89,8 @@ export default class App extends React.Component {
           <Regform />
           <AppNavigator
             screenProps={{
-              households: this.state.data
+              households: this.state.data,
+              passChore: this.passChore
             }} />
         </View>
       );

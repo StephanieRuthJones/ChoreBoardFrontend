@@ -8,8 +8,10 @@ import {
   Text,
   TouchableOpacity,
   View,
+  Button,
 
 } from 'react-native';
+
 import { WebBrowser } from 'expo';
 
 export default class HomeScreen extends React.Component {
@@ -18,25 +20,22 @@ export default class HomeScreen extends React.Component {
   };
 
   render() {
-    console.log("names", this.props.screenProps.households[0].name)
     return (
-      <View style={styles.container}>
-        <ScrollView style={styles.container}>
+      <ScrollView style={styles.container}>
         <View>
           <Image
             style={[styles.image]}
             source={
               require('../assets/images/logo.png')
-            }/>
+            } />
         </View>
-          <View>
-            <Text style={styles.households}>{this.props.screenProps.households[0].name}</Text>
-            <View style={styles.body}>{this.props.screenProps.households[0].roommates.map(roommate => {
-              return <Roommate key={roommate.id} roommate={roommate}></Roommate>
-            })}</View>
-          </View>
-        </ScrollView>
-      </View >
+        <View>
+          <Text style={styles.households}>{this.props.screenProps.households[0].name}</Text>
+          <View style={styles.body}>{this.props.screenProps.households[0].roommates.map(roommate => {
+            return <Roommate key={roommate.id} passChore={this.props.screenProps.passChore} roommates={this.props.screenProps.households[0].roommates} roommate={roommate}></Roommate>
+          })}</View>
+        </View>
+      </ScrollView>
     );
   }
 }
@@ -48,11 +47,11 @@ const styles = StyleSheet.create({
     paddingBottom: 30,
     backgroundColor: '#7AA095',
   },
-    image: {
-      alignSelf: 'center',
-      height: 55,
-      width: 55
-    },
+  image: {
+    alignSelf: 'center',
+    height: 55,
+    width: 55
+  },
   body: {
     flex: 1,
     marginHorizontal: 25,
