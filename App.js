@@ -77,7 +77,6 @@ export default class App extends React.Component {
   onPress = (newRoommate) => {
     this.setState({
       roommates: this.state.roommates.push(this.state.newRoommate)
-
     })
   }
 
@@ -93,7 +92,6 @@ export default class App extends React.Component {
       },
       body: JSON.stringify(choreObject)
     })
-
   }
 
   render() {
