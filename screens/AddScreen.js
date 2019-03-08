@@ -10,25 +10,25 @@ import {
 
 export default class Form extends React.Component {
 
-
+    
     render() {
 
         return (
             <View style={styles.form}>
-                
-            <Text style={styles.header}>
-            <Image
-              style={[styles.image]}
-              source={
-                require('../assets/images/logo.png')
-              }/>Sign In</Text>
-            <TextInput style={styles.textInput} placeholder="Your Email" placeholderTextColor= 'white'></TextInput>
-            <TextInput style={styles.textInput} placeholder="Password" secureTextEntry={true} placeholderTextColor= 'white'></TextInput>
 
-            <TouchableOpacity style={styles.button}>
-                <Text style={styles.buttonText}>Sign up</Text>
-            </TouchableOpacity>
-        </View>
+                <Text style={styles.header}>
+                    <Image
+                        style={[styles.image]}
+                        source={
+                            require('../assets/images/logo.png')
+                        } />Sign In</Text>
+                <TextInput style={styles.textInput} placeholder="Your Email" placeholderTextColor='white'></TextInput>
+                <TextInput style={styles.textInput} placeholder="Password" secureTextEntry={true} placeholderTextColor='white'></TextInput>
+
+                <TouchableOpacity style={styles.button}>
+                    <Text style={styles.buttonText}>Sign up</Text>
+                </TouchableOpacity>
+            </View>
         );
     }
 }
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
         paddingLeft: 10
     },
-   
+
     button: {
         alignSelf: 'stretch',
         alignItems: 'center',
@@ -76,9 +76,9 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     image: {
-      alignSelf: 'center',
-      paddingLeft: 20,
-      height: 55,
-      width: 55
+        alignSelf: 'center',
+        paddingLeft: 20,
+        height: 55,
+        width: 55
     },
 });

@@ -1,4 +1,5 @@
 {
+
   "expoServerPort": 19000,
   "expoServerNgrokUrl": "https://vd-r6w.anonymous.choreboardfrontend.exp.direct",
   "packagerNgrokUrl": "https://packager.vd-r6w.anonymous.choreboardfrontend.exp.direct",
@@ -6,4 +7,5 @@
   "devToolsPort": 19002,
   "packagerPort": 19003,
   "packagerPid": 25078
+
 }
