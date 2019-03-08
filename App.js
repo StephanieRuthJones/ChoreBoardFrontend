@@ -47,19 +47,33 @@ export default class App extends React.Component {
       .catch(err => console.error(err))
   }
 
-  passChore = (roommate_id, chores_id) => {
-    let currentIndex = 0
+  passChore = (paramRoommate_id, chores_id) => {
+    let roommate_id = paramRoommate_id
     if (roommate_id === -1) {
       roommate_id = this.state.data[0].roommates.length - 1
     }
+    let targetRoommate = roommate_id + 1
+    if(targetRoommate === this.state.data[0].roommates.length){
+      targetRoommate = 0
+    }
     let tempStateObject = this.state.data[0].roommates[roommate_id].chores[chores_id]
-    console.log(tempStateObject)
-    tempStateObject.roommate_id = roommate_id+1
-    console.log("modified object: ", tempStateObject)
+    let newData = [...this.state.data]
+    tempStateObject.roommate_id = newData[0].roommates[targetRoommate].id
+    newData[0].roommates[roommate_id].chores = newData[0].roommates[roommate_id].chores.filter(element => element.id !== tempStateObject.id)
+    newData[0].roommates[targetRoommate].chores = [...newData[0].roommates[targetRoommate].chores, tempStateObject]
+    this.setState({
+      data: newData
+    })
+    fetch(`${url}/chores/${tempStateObject.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(tempStateObject)
+    })
   }
 
   render() {
-
     if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) {
       return (
         <AppLoading

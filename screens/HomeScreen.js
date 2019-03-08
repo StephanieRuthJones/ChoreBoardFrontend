@@ -21,23 +21,21 @@ export default class HomeScreen extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <ScrollView style={styles.container}>
-          <View>
-            <Image
-              style={[styles.image]}
-              source={
-                require('../assets/images/logo.png')
-              } />
-          </View>
-          <View>
-            <Text style={styles.households}>{this.props.screenProps.households[0].name}</Text>
-            <View style={styles.body}>{this.props.screenProps.households[0].roommates.map(roommate => {
-              return <Roommate key={roommate.id} passChore={this.props.screenProps.passChore} roommates={this.props.screenProps.households[0].roommates} roommate={roommate}></Roommate>
-            })}</View>
-          </View>
-        </ScrollView>
-      </View >
+      <ScrollView style={styles.container}>
+        <View>
+          <Image
+            style={[styles.image]}
+            source={
+              require('../assets/images/logo.png')
+            } />
+        </View>
+        <View>
+          <Text style={styles.households}>{this.props.screenProps.households[0].name}</Text>
+          <View style={styles.body}>{this.props.screenProps.households[0].roommates.map(roommate => {
+            return <Roommate key={roommate.id} passChore={this.props.screenProps.passChore} roommates={this.props.screenProps.households[0].roommates} roommate={roommate}></Roommate>
+          })}</View>
+        </View>
+      </ScrollView>
     );
   }
 }

@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import { WebBrowser } from 'expo';
 
-export default class Chore extends React.Component {
+export default class VerboseChore extends React.Component {
 
 	constructor(props) {
 		super(props)
@@ -20,13 +20,15 @@ export default class Chore extends React.Component {
 		}
 	}
 
-	calcChoreIndex = () => this.state.roommate.chores.findIndex((chore) => chore.id === this.state.chore.id)
-
 	render() {
 		return (
 			<View>
-				<Text><Text style={styles.chores}>{this.state.chore.chore_name}: </Text><Text style={styles.choreDescriptionText}>{this.state.chore.chore_description}</Text></Text>
-				<TouchableOpacity onPress={() => this.props.passChore(this.props.calcRoommateIndex, this.calcChoreIndex())}>
+				<Text>
+					<Text style={styles.chores}>{this.state.chore.chore_name}: </Text>
+					<Text style={styles.choreDescriptionText}>{this.state.chore.chore_description}</Text>
+					{/* Insert all other chores here and also assign logic for CRUD functionality */}
+				</Text>
+				<TouchableOpacity>
 					<Image
 						style={styles.button}
 						source={require('../../assets/images/box.png')}
