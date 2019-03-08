@@ -30,7 +30,7 @@ export default class Roommate extends React.Component {
                 {this.state.roommate.chores.map(chore => {
                     return <Chore key={chore.id} chore={chore} passChore={this.props.passChore} calcRoommateIndex={this.calcRoommateIndex()} roommate={this.state.roommate}></Chore>
                 })}
-              
+
             </View>
         )
     }

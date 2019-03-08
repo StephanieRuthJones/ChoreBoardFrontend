@@ -1,12 +1,12 @@
 import React from 'react';
 import {
-    Image,
-    Platform,
-    ScrollView,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View,
+	Image,
+	Platform,
+	ScrollView,
+	StyleSheet,
+	Text,
+	TouchableOpacity,
+	View,
 } from 'react-native';
 import { WebBrowser } from 'expo';
 
@@ -24,7 +24,7 @@ export default class Chore extends React.Component {
 
 	render() {
 		return (
-			<View>
+			<View styles={styles.view}>
 				<Text><Text style={styles.chores}>{this.state.chore.chore_name}: </Text><Text style={styles.choreDescriptionText}>{this.state.chore.chore_description}</Text></Text>
 				<TouchableOpacity onPress={() => this.props.passChore(this.props.calcRoommateIndex, this.calcChoreIndex())}>
 					<Image
@@ -38,6 +38,12 @@ export default class Chore extends React.Component {
 }
 
 const styles = StyleSheet.create({
+	view: {
+		display: 'flex',
+		flexDirection: 'row',
+
+
+	},
 	choreDescriptionText: {
 		color: '#D4EFB0',
 	},
@@ -50,9 +56,11 @@ const styles = StyleSheet.create({
 		// lineHeight: 19,
 		textAlign: 'center',
 		fontWeight: 'bold',
+
 	},
 	button: {
 		height: 20,
 		width: 20,
+		// alignItems: 'flex-end',
 	},
 });
