@@ -17,6 +17,9 @@ export default class Form extends React.Component {
       zip: "",
       ifRoommateForm: false,
       ifChoreForm: false,
+
+      ifEditForm: false,
+
       newRoommate: null
     }
   }
@@ -33,6 +36,12 @@ export default class Form extends React.Component {
     })
   }
 
+  dropEditForm = () => {
+    this.setState({
+      ifEditForm: !this.state.ifEditForm
+    })
+  }
+
 
   handleName = (text) => {
     console.log('text', text)
@@ -41,12 +50,15 @@ export default class Form extends React.Component {
     })
   }
 
-  onPress = (newRoommate) => {
-    this.setState({
-      roommates: [...this.state.roommates, this.state.newRoommate]
-    })
-    console.log('button')
+  postNewRoommate = () => {
+    let tempObj = {
+      name: this.state.newRoommate,
+      household_id: 0,
+      total_stars: 0
+    }
+    this.props.screenProps.addNewRoommate(tempObj)
   }
+
   render() {
 
     return (
@@ -66,7 +78,7 @@ export default class Form extends React.Component {
             <TextInput style={styles.textInput} placeholder="Roommate Name" placeholderTextColor='white' onChangeText={this.handleName}></TextInput>
 
             <TouchableOpacity style={styles.button}>
-              <Text style={styles.buttonText} onPress={this.onPress} >Submit</Text>
+              <Text style={styles.buttonText} onPress={this.postNewRoommate} >Submit</Text>
             </TouchableOpacity>
           </View> : null}
         </TouchableOpacity>
@@ -84,6 +96,16 @@ export default class Form extends React.Component {
               <Text style={styles.buttonText}>Submit</Text>
             </TouchableOpacity>
           </View> : null}
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.button} onPress={this.dropEditForm}>
+        <Text style={styles.buttonText}>Edit A Chore</Text>
+        {this.state.ifEditForm ? <View style={styles.form}>
+        <TextInput style={styles.textInput} placeholder="Chore Title" placeholderTextColor='white'></TextInput>
+        <TouchableOpacity style={styles.button}>
+              <Text style={styles.buttonText}>Submit</Text>
+        </TouchableOpacity>
+        </View> : null} 
         </TouchableOpacity>
       </View >
 
@@ -127,5 +149,9 @@ const styles = StyleSheet.create({
     borderBottomColor: '#199187',
     borderBottomWidth: 1,
     paddingLeft: 10
-  }
+  },
+  textInput: {
+    paddingTop: 10,
+    textAlign: 'center'
+  } 
 });
