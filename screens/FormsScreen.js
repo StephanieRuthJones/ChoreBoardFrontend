@@ -17,7 +17,8 @@ export default class Form extends React.Component {
     this.state = {
       zip: "",
       ifRoommateForm: false,
-      ifChoreForm: false
+      ifChoreForm: false,
+      ifEditForm: false
     }
   }
 
@@ -30,6 +31,12 @@ export default class Form extends React.Component {
   dropChoreForm = () => {
     this.setState({
       ifChoreForm: !this.state.ifChoreForm
+    })
+  }
+
+  dropEditForm = () => {
+    this.setState({
+      ifEditForm: !this.state.ifEditForm
     })
   }
 
@@ -70,6 +77,16 @@ export default class Form extends React.Component {
               <Text style={styles.buttonText}>Submit</Text>
             </TouchableOpacity>
           </View> : null}
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.button} onPress={this.dropEditForm}>
+        <Text style={styles.buttonText}>Edit A Chore</Text>
+        {this.state.ifEditForm ? <View style={styles.form}>
+        <TextInput style={styles.textInput} placeholder="Chore Title" placeholderTextColor='white'></TextInput>
+        <TouchableOpacity style={styles.button}>
+              <Text style={styles.buttonText}>Submit</Text>
+        </TouchableOpacity>
+        </View> : null} 
         </TouchableOpacity>
       </View >
 
@@ -113,5 +130,9 @@ const styles = StyleSheet.create({
     borderBottomColor: '#199187',
     borderBottomWidth: 1,
     paddingLeft: 10
-  }
+  },
+  textInput: {
+    paddingTop: 10,
+    textAlign: 'center'
+  } 
 });
