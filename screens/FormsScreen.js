@@ -12,7 +12,13 @@ import {
 
 
 export default class Form extends React.Component {
-
+  constructor(props){
+    super(props);
+    this.state = {
+      zip: ""
+    }
+  }
+  
 
     render() {
 
@@ -27,7 +33,8 @@ export default class Form extends React.Component {
                 <TouchableOpacity style={styles.button}>
                   <Text style={styles.buttonText}>Add Roommate</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.button}>
+                <TouchableOpacity style={styles.button}
+                onPress={AddChore}>
                   <Text style={styles.buttonText}>Add Chore</Text>
                 </TouchableOpacity>
             </View>

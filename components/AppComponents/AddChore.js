@@ -17,13 +17,6 @@ export default class NewChore extends React.Component {
 
         return (
             <View style={styles.form}>
-                
-            {/* <Text style={styles.header}>
-            <Image
-              style={[styles.image]}
-              source={
-                require('../assets/images/logo.png')
-              }/>New Chore</Text> */}
             <TextInput style={styles.textInput} placeholder="Title" placeholderTextColor= 'white'></TextInput>
             <TextInput style={styles.textInput} placeholder="Description" secureTextEntry={true} placeholderTextColor= 'white'></TextInput>
             <TextInput style={styles.textInput} placeholder="Star Value" placeholderTextColor= 'white'></TextInput>
