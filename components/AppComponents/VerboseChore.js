@@ -41,7 +41,7 @@ export default class VerboseChore extends React.Component {
 			household_id: 0,
 			roommate_id: 0
 		}
-		this.props.addNewChore(newObject)
+		this.props.stateUpdateChore(newObject)
 	}
 
 	render() {

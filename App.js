@@ -73,7 +73,6 @@ export default class App extends React.Component {
     })
   }
 
-
   addNewRoommate = (newRoommate) => {
     let newData = [...this.state.data]
     newData[0].roommates = [...newData[0].roommates, newRoommate]
@@ -99,7 +98,6 @@ export default class App extends React.Component {
       },
       body: JSON.stringify(choreObject)
     })
-
   }
 
   render() {
