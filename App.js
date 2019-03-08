@@ -7,7 +7,7 @@ import Regform from './components/Regform'
 const url = 'https://choreboardserver.herokuapp.com'
 
 export default class App extends React.Component {
-  
+
   constructor(props) {
     super(props)
     this.state = {
@@ -53,7 +53,7 @@ export default class App extends React.Component {
       roommate_id = this.state.data[0].roommates.length - 1
     }
     let targetRoommate = roommate_id + 1
-    if(targetRoommate === this.state.data[0].roommates.length){
+    if (targetRoommate === this.state.data[0].roommates.length) {
       targetRoommate = 0
     }
     let tempStateObject = this.state.data[0].roommates[roommate_id].chores[chores_id]
@@ -71,6 +71,14 @@ export default class App extends React.Component {
       },
       body: JSON.stringify(tempStateObject)
     })
+  }
+
+  onPress = (newRoommate) => {
+    this.setState({
+      roommates: this.state.roommates.push(this.state.newRoommate)
+
+    })
+    console.log('button')
   }
 
   render() {

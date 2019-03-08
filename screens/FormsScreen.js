@@ -10,14 +10,14 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-
 export default class Form extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       zip: "",
       ifRoommateForm: false,
-      ifChoreForm: false
+      ifChoreForm: false,
+      newRoommate: null
     }
   }
 
@@ -33,6 +33,20 @@ export default class Form extends React.Component {
     })
   }
 
+
+  handleName = (text) => {
+    console.log('text', text)
+    this.setState({
+      newRoommate: text
+    })
+  }
+
+  onPress = (newRoommate) => {
+    this.setState({
+      roommates: [...this.state.roommates, this.state.newRoommate]
+    })
+    console.log('button')
+  }
   render() {
 
     return (
@@ -49,14 +63,14 @@ export default class Form extends React.Component {
           onPress={this.dropRoommateForm}>
           <Text style={styles.buttonText}>Add Roommate</Text>
           {this.state.ifRoommateForm ? <View style={styles.form}>
-            <TextInput style={styles.textInput} placeholder="Roommate Name" placeholderTextColor='white'></TextInput>
+            <TextInput style={styles.textInput} placeholder="Roommate Name" placeholderTextColor='white' onChangeText={this.handleName}></TextInput>
 
             <TouchableOpacity style={styles.button}>
-              <Text style={styles.buttonText}>Submit</Text>
+              <Text style={styles.buttonText} onPress={this.onPress} >Submit</Text>
             </TouchableOpacity>
           </View> : null}
         </TouchableOpacity>
-        
+
 
 
         <TouchableOpacity style={styles.button} onPress={this.dropChoreForm}>
