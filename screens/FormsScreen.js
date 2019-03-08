@@ -17,7 +17,11 @@ export default class Form extends React.Component {
       zip: "",
       ifRoommateForm: false,
       ifChoreForm: false,
+<<<<<<< HEAD
+      ifEditForm: false
+=======
       newRoommate: null
+>>>>>>> 018c8f35b801dfb99094784b7ea1a16b88f42984
     }
   }
 
@@ -33,6 +37,14 @@ export default class Form extends React.Component {
     })
   }
 
+<<<<<<< HEAD
+  dropEditForm = () => {
+    this.setState({
+      ifEditForm: !this.state.ifEditForm
+    })
+  }
+
+=======
 
   handleName = (text) => {
     console.log('text', text)
@@ -47,6 +59,7 @@ export default class Form extends React.Component {
     })
     console.log('button')
   }
+>>>>>>> 018c8f35b801dfb99094784b7ea1a16b88f42984
   render() {
 
     return (
@@ -84,6 +97,16 @@ export default class Form extends React.Component {
               <Text style={styles.buttonText}>Submit</Text>
             </TouchableOpacity>
           </View> : null}
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.button} onPress={this.dropEditForm}>
+        <Text style={styles.buttonText}>Edit A Chore</Text>
+        {this.state.ifEditForm ? <View style={styles.form}>
+        <TextInput style={styles.textInput} placeholder="Chore Title" placeholderTextColor='white'></TextInput>
+        <TouchableOpacity style={styles.button}>
+              <Text style={styles.buttonText}>Submit</Text>
+        </TouchableOpacity>
+        </View> : null} 
         </TouchableOpacity>
       </View >
 
@@ -127,5 +150,9 @@ const styles = StyleSheet.create({
     borderBottomColor: '#199187',
     borderBottomWidth: 1,
     paddingLeft: 10
-  }
+  },
+  textInput: {
+    paddingTop: 10,
+    textAlign: 'center'
+  } 
 });
