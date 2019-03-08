@@ -17,9 +17,7 @@ export default class Form extends React.Component {
       zip: "",
       ifRoommateForm: false,
       ifChoreForm: false,
-
       ifEditForm: false,
-
       newRoommate: null
     }
   }
@@ -42,7 +40,6 @@ export default class Form extends React.Component {
     })
   }
 
-
   handleName = (text) => {
     console.log('text', text)
     this.setState({
@@ -54,9 +51,11 @@ export default class Form extends React.Component {
     let tempObj = {
       name: this.state.newRoommate,
       household_id: 0,
-      total_stars: 0
+      total_stars: 0,
+      chores: []
     }
     this.props.screenProps.addNewRoommate(tempObj)
+    this.dropRoommateForm()
   }
 
   render() {
@@ -70,7 +69,6 @@ export default class Form extends React.Component {
               require('../assets/images/logo.png')
             } />Add More</Text>
 
-
         <TouchableOpacity style={styles.button}
           onPress={this.dropRoommateForm}>
           <Text style={styles.buttonText}>Add Roommate</Text>
@@ -82,8 +80,6 @@ export default class Form extends React.Component {
             </TouchableOpacity>
           </View> : null}
         </TouchableOpacity>
-
-
 
         <TouchableOpacity style={styles.button} onPress={this.dropChoreForm}>
           <Text style={styles.buttonText}>Add Chore</Text>
@@ -108,11 +104,9 @@ export default class Form extends React.Component {
         </View> : null} 
         </TouchableOpacity>
       </View >
-
     );
   }
 }
-
 
 const styles = StyleSheet.create({
   container: {
