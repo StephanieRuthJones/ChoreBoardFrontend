@@ -1,4 +1,5 @@
 import React from 'react';
+import Chore from "./Chore"
 import {
     Image,
     Platform,
@@ -15,16 +16,20 @@ export default class Roommate extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            roommate: this.props.roommate
+            roommate: this.props.roommate,
+            roommates: this.props.roommates
         }
     }
+    
+
+    calcRoommateIndex = () => this.state.roommates.findIndex((roommate) => roommate.id === this.state.roommate.id)
 
     render() {
         return (
             <View style={styles.container}>
                 <Text key={this.state.roommate.id} style={styles.names}>{this.state.roommate.name}'s Chores:</Text>
                 {this.state.roommate.chores.map(chore => {
-                    return <Text><Text style={styles.chores}>{chore.chore_name} </Text> </Text>
+                    return <Chore key={chore.id} chore={chore} passChore={this.props.passChore} calcRoommateIndex={this.calcRoommateIndex()} roommate={this.state.roommate}></Chore>
                 })}
             </View>
         )
@@ -53,7 +58,7 @@ const styles = StyleSheet.create({
     chores: {
         // textAlign: 'left',
         // margin: 10,
-        // paddingLeft: 30,
+        flexDirection: 'row',
         color: '#D7F9F1',
         fontSize: 25,
         // lineHeight: 19,
@@ -64,5 +69,9 @@ const styles = StyleSheet.create({
         color: '#7F7767',
         fontWeight: 'bold',
 
-    }
+    },
+    button: {
+        height: 20,
+        width: 20,
+    },
 });
