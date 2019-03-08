@@ -1,5 +1,6 @@
 import React from 'react';
 import Roommate from "../components/AppComponents/Roommate.js"
+import VerboseChore from "../components/AppComponents/VerboseChore.js"
 import {
   Image,
   Platform,

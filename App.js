@@ -73,6 +73,20 @@ export default class App extends React.Component {
     })
   }
 
+  addNewChore = (choreObject) => {
+    //insert index finding logic here later
+    let newData = [...this.state.data]
+    newData[0].roommates[0].chores = [...newData[0].roommates[0].chores, choreObject]
+    this.setState({data: newData})
+    fetch(`${url}/chores`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(choreObject)
+    })
+  }
+
   render() {
     if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) {
       return (
@@ -90,7 +104,8 @@ export default class App extends React.Component {
           <AppNavigator
             screenProps={{
               households: this.state.data,
-              passChore: this.passChore
+              passChore: this.passChore,
+              addNewChore: this.addNewChore
             }} />
         </View>
       );
