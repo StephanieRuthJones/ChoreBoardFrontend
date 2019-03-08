@@ -23,6 +23,7 @@ export default class VerboseChore extends React.Component {
 	render() {
 		return (
 			<View>
+				
 				<Text>
 					<Text style={styles.chores}>{this.state.chore.chore_name}: </Text>
 					<Text style={styles.choreDescriptionText}>{this.state.chore.chore_description}</Text>
